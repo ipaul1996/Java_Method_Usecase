@@ -1,0 +1,140 @@
+package com.ip;
+
+public class Student {
+	
+	public int roll;
+	public String name;
+	
+	public Student(int roll, String name) {
+		super();
+		this.roll = roll;
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [roll=" + roll + ", name=" + name + "]";
+	}
+	
+}
+
+
+
+package com.ip;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Demo3 {
+
+	public static void main(String[] args) {
+		
+		List<Student> list = new ArrayList<>();
+		list.add(new Student(1, "N1"));
+		list.add(new Student(3, "N3"));
+		list.add(new Student(9, "N9"));
+		list.add(new Student(4, "N4"));
+		list.add(new Student(2, "N2"));
+		list.add(new Student(5, "N5"));
+		
+		Collections.sort(list, (s1, s2) -> {
+			return s1.roll > s2.roll ? +1 : s1.roll < s2.roll ? -1 : 0;
+		});
+		
+		list.forEach(System.out :: println);
+	
+		
+     Output:
+	Student [roll=1, name=N1]
+	Student [roll=2, name=N2]
+	Student [roll=3, name=N3]
+	Student [roll=4, name=N4]
+	Student [roll=5, name=N5]
+	Student [roll=9, name=N9]
+				
+	In comparator, if first object is greater than the second one and we return a positive number and 
+	if first one is lesser than second one and we return a negative number and if equal we return 0 then 
+	we will get a ascending order list. If we do the opposite we will get a descending order list.
+		
+		
+
+	}
+
+}
+
+********************************************************************************
+
+package com.ip;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
+public class Demo1 {
+	
+	public static void main(String[] args) {
+		
+		List<int[]> listArray = new ArrayList<>();
+		
+		int[] arr1 = {1, 2};
+		int[] arr2 = {3, 4};
+		int[] arr3 = {1, 5};
+		int[] arr4 = {3, 6};
+		
+		listArray.add(arr1);
+		listArray.add(arr2);
+		listArray.add(arr3);
+		listArray.add(arr4);
+		
+		Collections.sort(listArray, (ar1, ar2) -> {
+            
+            int a1 = ar1[0];
+            int b1 = ar1[1];
+            int a2 = ar2[0];
+            int b2 = ar2[1];
+            
+            if(a1 > a2) {
+                return +1;
+            } else if(a1 < a2) {
+                return -1;
+            } else {
+                if(b1 > b2) {
+                  return +1;  
+                } else if(b1 < b2) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+		
+		for(int[] ar : listArray) {
+            System.out.println(Arrays.toString(ar));
+        }
+	
+
+	 /*
+	           [1, 2]
+			[1, 5]
+			[3, 4]
+			[3, 6]
+	  */
+		
+	}
+
+}
+
+
+
+
+
+
+
+
